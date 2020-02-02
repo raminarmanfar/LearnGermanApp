@@ -6,20 +6,80 @@
     app:startDestination="@id/homePage">
     <fragment
         android:id="@+id/homePage"
-        android:name="com.raminarmanfar.learngermanapp.HomePage"
+        android:name="com.raminarmanfar.learngermanapp.HomePageFragment"
         android:label="fragment_home_page"
         tools:layout="@layout/fragment_home_page">
         <action
             android:id="@+id/action_homePage_to_herrProfessorList"
             app:destination="@+id/herrProfessorList"
-            app:enterAnim="@anim/fragmet_enter"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_homePage_to_verbsListPage"
+            app:destination="@id/verbsListPage"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_homePage_to_nounsListFragment"
+            app:destination="@id/nounsListFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_homePage_to_adjectivesListFragment"
+            app:destination="@id/adjectivesListFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_homePage_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_homePage_to_aboutMeFragment"
+            app:destination="@id/aboutMeFragment"
+            app:enterAnim="@anim/fragment_enter"
             app:exitAnim="@anim/fragment_exit"
             app:popEnterAnim="@anim/pop_enter"
             app:popExitAnim="@anim/pop_exit" />
     </fragment>
     <fragment
         android:id="@+id/herrProfessorList"
-        android:name="com.raminarmanfar.learngermanapp.HerrProfessorList"
+        android:name="com.raminarmanfar.learngermanapp.HerrProfessorListFragment"
         android:label="fragment_herr_professor_list"
         tools:layout="@layout/fragment_herr_professor_list" />
+    <fragment
+        android:id="@+id/verbsListPage"
+        android:name="com.raminarmanfar.learngermanapp.VerbsListFragment"
+        android:label="fragment_verbs_list_page"
+        tools:layout="@layout/fragment_verbs_list_page" />
+    <fragment
+        android:id="@+id/nounsListFragment"
+        android:name="com.raminarmanfar.learngermanapp.NounsListFragment"
+        android:label="fragment_nouns_list"
+        tools:layout="@layout/fragment_nouns_list" />
+    <fragment
+        android:id="@+id/adjectivesListFragment"
+        android:name="com.raminarmanfar.learngermanapp.AdjectivesListFragment"
+        android:label="fragment_adjectives_list"
+        tools:layout="@layout/fragment_adjectives_list" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.raminarmanfar.learngermanapp.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/aboutMeFragment"
+        android:name="com.raminarmanfar.learngermanapp.AboutMeFragment"
+        android:label="fragment_about_me"
+        tools:layout="@layout/fragment_about_me" />
 </navigation>
