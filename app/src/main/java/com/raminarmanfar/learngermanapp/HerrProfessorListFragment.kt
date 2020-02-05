@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.raminarmanfar.learngermanapp.models.DBHandler
 import com.raminarmanfar.learngermanapp.models.HerrProfessorModel
 import com.raminarmanfar.learngermanapp.models.HerrProffessorAdapter
@@ -17,6 +17,7 @@ import com.raminarmanfar.learngermanapp.models.HerrProffessorAdapter
  * A simple [Fragment] subclass.
  */
 class HerrProfessorListFragment : Fragment() {
+    private val TAG = "HP Dialog"
 
     companion object {
         lateinit var dbHandler: DBHandler
@@ -30,9 +31,20 @@ class HerrProfessorListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val fab = view.findViewById<FloatingActionButton>(R.id.fabAddHp)
+        fab.setOnClickListener {
+            openDialog()
+        }
+
         dbHandler = DBHandler(context, null, null, 1)
         viewHPs(view)
     }
+
+    private fun openDialog() {
+        val hpDetailDialog = HerrProfessorDetailDialog()
+        hpDetailDialog.show(requireActivity().supportFragmentManager!!.beginTransaction(), "Add Dialog")
+    }
+
     private fun viewHPs(view: View) {
         val hpsList: ArrayList<HerrProfessorModel> = dbHandler.getHps(context)
         val adapter = HerrProffessorAdapter(context, hpsList)
