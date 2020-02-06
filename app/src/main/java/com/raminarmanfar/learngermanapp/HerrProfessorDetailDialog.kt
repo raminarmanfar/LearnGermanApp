@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import com.raminarmanfar.learngermanapp.models.HerrProfessorModel
 
 
 /**
@@ -50,7 +51,13 @@ class HerrProfessorDetailDialog : DialogFragment() {
                         val courseTitle = txtCourseTitle!!.text.toString()
                         val translation = txtTranslation!!.text.toString()
                         val youtubeLink = txtYoutubeLink!!.text.toString()
-                        HerrProfessorListFragment.dbHandler.
+
+                        val hpModel = HerrProfessorModel()
+                        hpModel.hpCourseTitle = courseTitle
+                        hpModel.hpTranslation = translation
+                        hpModel.hpYoutubeLink = youtubeLink
+
+                        HerrProfessorListFragment.dbHandler.addHp(this, hpModel)
                     }
                 }
         txtCourseTitle = view.findViewById(R.id.txtCourseTitle)
