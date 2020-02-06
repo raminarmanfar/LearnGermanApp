@@ -2,6 +2,7 @@ package com.raminarmanfar.learngermanapp
 
 
 import android.app.Dialog
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,9 +19,15 @@ import androidx.fragment.app.Fragment
  * A simple [Fragment] subclass.
  */
 class HerrProfessorDetailDialog : DialogFragment() {
-    private var txtCategoryName: EditText? = null
-    private var txtCategoryType: EditText? = null
-    private var hpDialogListener: HPDialogListener? = null
+    private var txtCourseTitle: EditText? = null
+    private var txtTranslation: EditText? = null
+    private var txtYoutubeLink: EditText? = null
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        val parent = inflater.inflate(R.layout.fragment_herr_professor_list, container, false)
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         var builder: AlertDialog.Builder = AlertDialog.Builder(context!!)
@@ -28,38 +35,27 @@ class HerrProfessorDetailDialog : DialogFragment() {
         val view: View = inflater.inflate(R.layout.fragment_herr_professor_detail_dialog, null)
 
         builder.setView(view)
-                .setTitle("Add New HP")
+                .setTitle("Add New Course")
                 .setNegativeButton(
                         "Cancel"
                 ) { _: DialogInterface?, _: Int -> }
                 .setPositiveButton(
                         "Save"
                 ) { _: DialogInterface?, _: Int ->
-                    if (txtCategoryName!!.text.toString().trim { it <= ' ' }.isEmpty() || txtCategoryType!!.text.toString().trim { it <= ' ' }.isEmpty()) {
-                        Toast.makeText(view.context,"Name or type is not set.", Toast.LENGTH_LONG).show()
+                    if (txtCourseTitle!!.text.toString().trim { it <= ' ' }.isEmpty() ||
+                            txtTranslation!!.text.toString().trim { it <= ' ' }.isEmpty() ||
+                            txtYoutubeLink!!.text.toString().trim { it <= ' ' }.isEmpty()) {
+                        Toast.makeText(view.context, "Please fill in required fields.", Toast.LENGTH_SHORT).show()
                     } else {
-                        val categoryName = txtCategoryName!!.text.toString()
-                        val categoryType = txtCategoryType!!.text.toString()
-                        // txtCategoryName.getText().clear();
-                        // txtCategoryType.getText().clear();
-                        hpDialogListener!!.applyCategory(categoryName, categoryType)
+                        val courseTitle = txtCourseTitle!!.text.toString()
+                        val translation = txtTranslation!!.text.toString()
+                        val youtubeLink = txtYoutubeLink!!.text.toString()
+                        HerrProfessorListFragment.dbHandler.
                     }
                 }
-        txtCategoryName = view.findViewById(R.id.txtCategoryName)
-        txtCategoryType = view.findViewById(R.id.txtCategoryType)
+        txtCourseTitle = view.findViewById(R.id.txtCourseTitle)
+        txtTranslation = view.findViewById(R.id.txtTranslation)
+        txtYoutubeLink = view.findViewById(R.id.txtYoutubeLink)
         return builder.create()
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_herr_professor_detail_dialog, container, false)
-    }
-
-    interface HPDialogListener {
-        fun applyCategory(
-                categoryName: String?,
-                categoryType: String?
-        )
     }
 }

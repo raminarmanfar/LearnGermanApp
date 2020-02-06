@@ -42,7 +42,7 @@ class HerrProfessorListFragment : Fragment() {
 
     private fun openDialog() {
         val hpDetailDialog = HerrProfessorDetailDialog()
-        hpDetailDialog.show(requireActivity().supportFragmentManager!!.beginTransaction(), "Add Dialog")
+        hpDetailDialog.show(requireActivity().supportFragmentManager!!.beginTransaction(), "Add HP Dialog")
     }
 
     private fun viewHPs(view: View) {

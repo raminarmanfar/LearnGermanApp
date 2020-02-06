@@ -10,18 +10,25 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/txtCategoryName"
+            android:id="@+id/txtCourseTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_margin="10dp"
-            android:hint="category_name" />
+            android:hint="@string/course_title" />
 
         <EditText
-            android:id="@+id/txtCategoryType"
+            android:id="@+id/txtTranslation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:hint="category_type" />
+            android:hint="@string/translation" />
+
+        <EditText
+            android:id="@+id/txtYoutubeLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="@string/youtube_link" />
     </LinearLayout>
 </RelativeLayout>
