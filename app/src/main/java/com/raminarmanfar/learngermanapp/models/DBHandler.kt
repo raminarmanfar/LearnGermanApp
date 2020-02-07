@@ -1,9 +1,11 @@
 package com.raminarmanfar.learngermanapp.models
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
+import java.lang.Exception
 
 class DBHandler(context: Context?, name: String?, factory: SQLiteDatabase.CursorFactory?, version: Int) :
         SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
@@ -54,5 +56,20 @@ class DBHandler(context: Context?, name: String?, factory: SQLiteDatabase.Cursor
         cursor.close()
         db.close()
         return hps
+    }
+
+    fun addHp(mCtx: Context, hp: HerrProfessorModel) {
+        val values = ContentValues()
+        values.put(COL_HP_COURSE_TITLE, hp.hpCourseTitle)
+        values.put(COL_HP_TRANSLATION, hp.hpTranslation)
+        values.put(COL_HP_YOUTUBE_LINK, hp.hpYoutubeLink)
+        val db = this.writableDatabase
+        try {
+            db.insert(HP_TABLE_NAME, null, values)
+            Toast.makeText(mCtx, "New Course added.", Toast.LENGTH_SHORT).show()
+        } catch (e: Exception) {
+            Toast.makeText(mCtx, e.message, Toast.LENGTH_SHORT).show()
+        }
+        db.close()
     }
 }

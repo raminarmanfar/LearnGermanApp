@@ -34,10 +34,11 @@ class HerrProfessorListFragment : Fragment() {
         val fab = view.findViewById<FloatingActionButton>(R.id.fabAddHp)
         fab.setOnClickListener {
             openDialog()
+
         }
 
         dbHandler = DBHandler(context, null, null, 1)
-        viewHPs(view)
+        viewHPs()
     }
 
     private fun openDialog() {
@@ -45,11 +46,16 @@ class HerrProfessorListFragment : Fragment() {
         hpDetailDialog.show(requireActivity().supportFragmentManager!!.beginTransaction(), "Add HP Dialog")
     }
 
-    private fun viewHPs(view: View) {
+    private fun viewHPs() {
         val hpsList: ArrayList<HerrProfessorModel> = dbHandler.getHps(context)
         val adapter = HerrProffessorAdapter(context, hpsList)
-        val rv: RecyclerView = view.findViewById(R.id.rvHerrProfessor)
+        val rv: RecyclerView = view!!.findViewById(R.id.rvHerrProfessor)
         rv.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         rv.adapter = adapter
+    }
+
+    override fun onResume() {
+        viewHPs()
+        super.onResume()
     }
 }
