@@ -57,7 +57,7 @@ class HerrProfessorDetailDialog : DialogFragment() {
                         hpModel.hpTranslation = translation
                         hpModel.hpYoutubeLink = youtubeLink
 
-                        HerrProfessorListFragment.dbHandler.addHp(this, hpModel)
+                        // HerrProfessorListFragment.dbHandler.addHp(this, hpModel)
                     }
                 }
         txtCourseTitle = view.findViewById(R.id.txtCourseTitle)
